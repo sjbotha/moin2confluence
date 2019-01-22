@@ -28,12 +28,19 @@ Example:
 The wiki root directory should be the one that contains the data directory
 
 # Converting all pages in moin moin wiki
-# You can invoke this bash script to call the script for each page
+
+You can invoke this bash script to call the script for each page:
 
     for PAGE in `ls /webs/wiki/data/pages`; do echo $file; ~/moin2confluence/convert.sh "$PAGE" /webs/wiki/ output/; done
 
 # Importing pages into Confluence
 After running the script login to Confluence and go to Site Tools > Import, enter the path to the output directory and click Import
+
+# How it works
+ * MoinMoin syntax is pretty close to mediawiki syntax so we convert to that first
+ * We use pandoc to convert from mediawiki to markdown
+ * Then we use the modified confluence.lua Custom Writer to convert from markdown to Confluence Storage Format
+ * Finally you use Confluence Site Tools Import to import the Confluence Storage Format files
 
 # Credits
 
