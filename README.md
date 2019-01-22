@@ -34,7 +34,7 @@ You can invoke this bash script to call the script for each page:
     for PAGE in `ls /webs/wiki/data/pages`; do echo $file; ~/moin2confluence/convert.sh "$PAGE" /webs/wiki/ output/; done
 
 # Importing pages into Confluence
-After running the script login to Confluence and go to Space Tools > Content Tools > Import, enter the path to the output directory and click Import
+I would recommend importing the pages into a separate Space and then moving over the ones you want to keep. After running the moin2confluence script login to Confluence and go to Space Tools > Content Tools > Import, enter the path to the output directory and click Import
 
 # How it works
  * MoinMoin syntax is pretty close to mediawiki syntax so we convert to that first
