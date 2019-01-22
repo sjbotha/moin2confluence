@@ -19,11 +19,11 @@ You can tar up the moinmoin wiki files and copy them to the Confluence server.
 
 Syntax: 
 
-    ././moin2confluence.sh <PageName> <wiki root> <output dir>
+    ./moin2confluence.sh <PageName> <wiki root> <output dir>
 
 Example: 
 
-    ././moin2confluence.sh Certificates /data/webs/DVTech outputdir
+    ./moin2confluence.sh Certificates /data/webs/DVTech outputdir
 
 The wiki root directory should be the one that contains the data directory
 
