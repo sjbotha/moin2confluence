@@ -8,7 +8,7 @@ You can tar up the moinmoin wiki files and copy them to the Confluence server.
 # Caveats
  * Tables do not work right
  * I have not tested base64 embedded images and I'm sure linked images uploaded to MoinMoin will not work
- * If a page was a Sug pages will no longer be a sub page. The link should still work but you have to manually move it so it does not show up in the list of root pages.
+ * If a page was a sub page it will no longer be a sub page. The link should still work but you have to manually move it so it does not show up in the list of root pages.
 
 # Install
 
