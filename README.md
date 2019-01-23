@@ -31,7 +31,7 @@ The wiki root directory should be the one that contains the data directory
 
 You can invoke this bash script to call the script for each page:
 
-    for PAGE in `ls /webs/wiki/data/pages`; do echo $file; ~/moin2confluence/convert.sh "$PAGE" /webs/wiki/ output/; done
+    for PAGE in `ls /webs/wiki/data/pages`; do echo $PAGE; ~/moin2confluence/moin2confluence.sh "$PAGE" /webs/wiki/ output/; done
 
 # Importing pages into Confluence
 After running the script login to Confluence and go to Site Tools > Import, enter the path to the output directory and click Import
