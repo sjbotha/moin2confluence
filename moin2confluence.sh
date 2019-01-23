@@ -32,6 +32,33 @@ sed -i "s/^  1. /## /g" "$WORKING/$PAGENAME.wiki"
 sed -i "s/{{{/<pre>/g" "$WORKING/$PAGENAME.wiki"
 sed -i "s/}}}/<\/pre>/g" "$WORKING/$PAGENAME.wiki"
 
+# handle 8 column tables
+sed -i "s/^||\(.*\)||\(.*\)||\(.*\)||\(.*\)||\(.*\)||\(.*\)||\(.*\)||\(.*\)||/<tr><td>\1<\/td><td>\2<\/td><td>\3<\/td><td>\4<\/td><td>\5<\/td><td>\6<\/td><td>\7<\/td><td>\8<\/td><\/tr>/g" "$WORKING/$PAGENAME.wiki"
+
+# handle 7 column tables
+sed -i "s/^||\(.*\)||\(.*\)||\(.*\)||\(.*\)||\(.*\)||\(.*\)||\(.*\)||/<tr><td>\1<\/td><td>\2<\/td><td>\3<\/td><td>\4<\/td><td>\5<\/td><td>\6<\/td><td>\7<\/td><\/tr>/g" "$WORKING/$PAGENAME.wiki"
+
+# handle 6 column tables
+sed -i "s/^||\(.*\)||\(.*\)||\(.*\)||\(.*\)||\(.*\)||\(.*\)||/<tr><td>\1<\/td><td>\2<\/td><td>\3<\/td><td>\4<\/td><td>\5<\/td><td>\6<\/td><\/tr>/g" "$WORKING/$PAGENAME.wiki"
+
+# handle 5 column tables
+sed -i "s/^||\(.*\)||\(.*\)||\(.*\)||\(.*\)||\(.*\)||/<tr><td>\1<\/td><td>\2<\/td><td>\3<\/td><td>\4<\/td><td>\5<\/td><\/tr>/g" "$WORKING/$PAGENAME.wiki"
+
+# handle 4 column tables
+sed -i "s/^||\(.*\)||\(.*\)||\(.*\)||\(.*\)||/<tr><td>\1<\/td><td>\2<\/td><td>\3<\/td><td>\4<\/td><\/tr>/g" "$WORKING/$PAGENAME.wiki"
+
+# handle 3 column tables
+sed -i "s/^||\(.*\)||\(.*\)||\(.*\)||/<tr><td>\1<\/td><td>\2<\/td><td>\3<\/td><\/tr>/g" "$WORKING/$PAGENAME.wiki"
+
+# handle 2 column tables
+sed -i "s/^||\(.*\)||\(.*\)||/<tr><td>\1<\/td><td>\2<\/td><\/tr>/g" "$WORKING/$PAGENAME.wiki"
+
+# add <table> to start of table
+perl -0777 -i -pe 's/[^>]\r\n<tr>/\r\n<table>\r\n<tr>/g' "$WORKING/$PAGENAME.wiki"
+
+# add </table> to end of table
+perl -0777 -i -pe 's/<\/tr>\r\n[^<]/<\/tr>\r\n<\/table>/g' "$WORKING/$PAGENAME.wiki"
+
 # convert from mediawiki to markdown
 pandoc -f mediawiki -t markdown -s "$WORKING/$PAGENAME.wiki" -o "$WORKING/$PAGENAME.md"
 
