@@ -34,8 +34,11 @@ sed -i "s/^  1. /## /g" "$WORKING/$PAGENAME.wiki"
 sed -i "s/{{{/<pre>/g" "$WORKING/$PAGENAME.wiki"
 sed -i "s/}}}/<\/pre>/g" "$WORKING/$PAGENAME.wiki"
 
+# auto convert camel case moinmoin to link in mediawiki
+sed -i -r 's/ ([/]?[A-Z][A-Za-z0-9]+[A-Z]+[a-z0-9]+)/ [[\1]]/g' "$WORKING/$PAGENAME.wiki"
+
 # remove ''''''
-sed -i "s/''''''//g" "$WORKING/$PAGENAME.wiki"
+sed -i "s/\([A-Z]([A-Z0-9]*[a-z][a-z0-9]*[A-Z]|[a-z0-9]*[A-Z][A-Z0-9]*[a-z])[A-Za-z0-9]*\)/[[\1]]/g" "$WORKING/$PAGENAME.wiki"
 
 # Start table handling
 # This table handling is a hack because we actually convert straight to confluence format and not mediawiki format
