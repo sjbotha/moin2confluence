@@ -8,7 +8,7 @@ You can tar up the moinmoin wiki files and copy them to the Confluence server.
 # Caveats
  * Tables do not work right
  * I have not tested base64 embedded images and I'm sure linked images uploaded to MoinMoin will not work
- * If a page was a Sug pages will no longer be a sub page. The link should still work but you have to manually move it so it does not show up in the list of root pages.
+ * If a page was a sub page it will no longer be a sub page. The link should still work but you have to manually move it so it does not show up in the list of root pages.
 
 # Install
 
@@ -34,7 +34,7 @@ You can invoke this bash script to call the script for each page:
     for PAGE in `ls /webs/wiki/data/pages`; do echo $PAGE; ~/moin2confluence/moin2confluence.sh "$PAGE" /webs/wiki/ output/; done
 
 # Importing pages into Confluence
-After running the script login to Confluence and go to Site Tools > Import, enter the path to the output directory and click Import
+I would recommend importing the pages into a separate Space and then moving over the ones you want to keep. After running the moin2confluence script login to Confluence and go to Space Tools > Content Tools > Import, enter the path to the output directory and click Import
 
 # How it works
  * MoinMoin syntax is pretty close to mediawiki syntax so we convert to that first
